@@ -36,6 +36,32 @@ public class Problem3Test {
     public void testInOrderTraverse() {
         // homework
         // to verify inOrderTraverse(TreeNode<Integer> node)
+
+        //      5
+        //     / \
+        //    2   6
+        //   / \   \
+        //  1   3   7
+            TreeNode<Integer> root = new TreeNode<>(5);
+            root.left = new TreeNode<>(2);
+            root.left.left = new TreeNode<>(1);
+            root.left.right = new TreeNode<>(3);
+            root.right = new TreeNode<>(6);
+            root.right.right = new TreeNode<>(7);
+            assertEquals(Arrays.asList(1, 2, 3, 5, 6, 7), inOrderTraverse(root));
+
+        //      5
+        //     / \
+        //    3   6
+        //   / \   \
+        //  2   4   7
+            root = new TreeNode<>(5);
+            root.left = new TreeNode<>(3);
+            root.left.left = new TreeNode<>(2);
+            root.left.right = new TreeNode<>(4);
+            root.right = new TreeNode<>(6);
+            root.right.right = new TreeNode<>(7);
+            assertEquals(Arrays.asList(2, 3, 4, 5, 6, 7), inOrderTraverse(root));
     }
 
     private static List<Integer> inOrderTraverse(TreeNode<Integer> node) {
@@ -147,8 +173,12 @@ public class Problem3Test {
         // homework
         // what problem can you see for insertInBst from this test case?
         // answer:
+        // What i believe to be the problem is that the final node will always be athe the bottem right making it
+        // seem pretty similar to a linkedlist.
         // discuss how you would solve it in a comment below
         // answer:
+        // To solve this I would continuously compare the nodes to see which one is the biggest number and the sent
+        // an outside int to equal that node value.
         root = new TreeNode<>(1);
         testCases.add(new BSTTestCase<>(root, 2, Arrays.asList(1, 2)));
         testCases.add(new BSTTestCase<>(root, 3, Arrays.asList(1, 2, 3)));
